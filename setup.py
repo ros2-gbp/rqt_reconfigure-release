@@ -11,7 +11,7 @@ if sys.version_info < (3, 5):
 package_name = 'rqt_reconfigure'
 setup(
     name=package_name,
-    version='1.0.1',
+    version='1.0.4',
     package_dir={'': 'src'},
     packages=[package_name],
     data_files=[
@@ -30,6 +30,8 @@ setup(
         ]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name, ['plugin.xml']),
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
