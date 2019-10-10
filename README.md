@@ -1,3 +1,26 @@
+## rqt_reconfigure (dashing) - 1.0.4-1
+
+The packages in the `rqt_reconfigure` repository were released into the `dashing` distro by running `/usr/bin/bloom-release -r dashing -t dashing rqt_reconfigure` on `Thu, 10 Oct 2019 21:24:55 -0000`
+
+The `rqt_reconfigure` package was released.
+
+Version of package(s) in repository `rqt_reconfigure`:
+
+- upstream repository: https://github.com/ros-visualization/rqt_reconfigure.git
+- release repository: https://github.com/ros2-gbp/rqt_reconfigure-release.git
+- rosdistro version: `1.0.3-1`
+- old version: `1.0.3-1`
+- new version: `1.0.4-1`
+
+Versions of tools used:
+
+- bloom version: `0.8.0`
+- catkin_pkg version: `0.4.13`
+- rosdep version: `0.16.1`
+- rosdistro version: `0.7.5`
+- vcstools version: `0.1.42`
+
+
 ## rqt_reconfigure (eloquent) - 1.0.3-1
 
 The packages in the `rqt_reconfigure` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release --rosdistro eloquent rqt_reconfigure` on `Thu, 03 Oct 2019 16:46:17 -0000`
