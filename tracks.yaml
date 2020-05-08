@@ -63,6 +63,7 @@ tracks:
     devel_branch: dashing
     name: upstream
     patches: null
+    release_inc: 0
     release_repo_url: null
     release_tag: :{version}
     ros_distro: foxy
