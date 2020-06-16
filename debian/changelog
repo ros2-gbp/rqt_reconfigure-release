@@ -1,0 +1,322 @@
+ros-rolling-rqt-reconfigure (1.0.5-2focal) focal; urgency=high
+
+  * Fix new flake8 warning (#65 <https://github.com/ros-visualization/rqt_reconfigure/issues/65>)
+  * Contributors: Dirk Thomas
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 02 Jun 2020 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (1.0.4-2focal) focal; urgency=high
+
+  * install package marker (#55) (#55 <https://github.com/ros-visualization/rqt_reconfigure/pull/55>)
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 10 Oct 2019 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (1.0.3-2focal) focal; urgency=high
+
+  * Drop ROS 1 info from package description (#54 <https://github.com/ros-visualization/rqt_reconfigure/issues/54>)
+    Signed-off-by: Scott K Logan <mailto:logans@cottsay.net>
+  * Contributors: Scott K Logan
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 23 Aug 2019 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (1.0.2-2focal) focal; urgency=high
+
+  * Use a consistent formatting method when logging (#49 <https://github.com/ros-visualization/rqt_reconfigure/issues/49>)
+    This will improve logging function compatibility between ROS 1 and
+    ROS 2.
+    Signed-off-by: Scott K Logan <mailto:logans@cottsay.net>
+  * Re-format license headers to conform to ROS templates (#39 <https://github.com/ros-visualization/rqt_reconfigure/issues/39>)
+    This change adds a line to the license headers specifying the name of
+    the license that follows. It also re-formats the recently added LICENSE
+    and CONTRIBUTING.md files to match the templates.
+    Signed-off-by: Scott K Logan <mailto:logans@cottsay.net>
+  * Rename DynreconfClientWidget => ParamClientWidget (#36 <https://github.com/ros-visualization/rqt_reconfigure/issues/36>)
+  * Add ament tests
+  * Add LICENSE and CONTRIBUTING.md (#37 <https://github.com/ros-visualization/rqt_reconfigure/issues/37>)
+  * Format per linter suggestions and run tests (#35 <https://github.com/ros-visualization/rqt_reconfigure/issues/35>)
+  * Fix some linter errors and get tests running (#33 <https://github.com/ros-visualization/rqt_reconfigure/issues/33>)
+  * Pull logging methods into a separate file (#34 <https://github.com/ros-visualization/rqt_reconfigure/issues/34>)
+  * Update to package.xml format 2 (#32 <https://github.com/ros-visualization/rqt_reconfigure/issues/32>)
+  * Migration to ROS2
+  * Contributors: Gonzalo de Pedro, Gonzo, Michel Hidalgo, Scott K Logan, Timon Engelke
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 23 Aug 2019 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.10-2focal) focal; urgency=high
+
+  * Lazy load dynamic_reconfigure client for each node
+    Fixes #20 <https://github.com/ros-visualization/rqt_reconfigure/issues/20>
+  * Use English locale in QDoubleValidator
+    Fixes #21 <https://github.com/ros-visualization/rqt_reconfigure/issues/21>
+  * Contributors: Arkady Shapkin, Yuki Furuta
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 19 Apr 2018 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.9-2focal) focal; urgency=high
+
+  * Added error handling for dynamic_reconfigure exceptions (#10 <https://github.com/ros-visualization/rqt_reconfigure/pull/10>)
+  * Fix left pane tree view resizing (#11 <https://github.com/ros-visualization/rqt_reconfigure/pull/11>)
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 30 Jan 2018 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.8-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 24 Apr 2017 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.7-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 02 Mar 2017 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.6-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 27 Feb 2017 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.5-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 03 Feb 2017 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.4-2focal) focal; urgency=high
+
+  * replace setShown with setVisible (#418 <https://github.com/ros-visualization/rqt_common_plugins/issues/418>)
+  * use Python 3 compatible syntax (#421 <https://github.com/ros-visualization/rqt_common_plugins/pull/421>)
+  * add buttons to 'save' to and 'load' from file (#406 <https://github.com/ros-visualization/rqt_common_plugins/pull/406>)
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 24 Jan 2017 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.3-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 02 Nov 2016 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.2-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 19 Sep 2016 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.1-2focal) focal; urgency=high
+
+  * fix accessing attribute superseded in Qt5 (#370 <https://github.com/ros-visualization/rqt_common_plugins/issues/370>)
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 16 May 2016 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.4.0-2focal) focal; urgency=high
+
+  * Support Qt 5 (in Kinetic and higher) as well as Qt 4 (in Jade and earlier) (#359 <https://github.com/ros-visualization/rqt_common_plugins/pull/359>)
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 27 Apr 2016 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.13-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 08 Mar 2016 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.12-2focal) focal; urgency=high
+
+  * Added refresh button to re-scan reconfigure server list
+  * Now retains functioning nodes when refreshing
+  * Contributors: Kei Okada, Scott K Logan
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 24 Jul 2015 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.11-2focal) focal; urgency=high
+
+  * restore support for parameter groups (#162 <https://github.com/ros-visualization/rqt_common_plugins/issues/162>)
+  * fix background colors for dark themes (#293 <https://github.com/ros-visualization/rqt_common_plugins/issues/293>)
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 30 Apr 2015 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.10-2focal) focal; urgency=high
+
+  * update plugin scripts to use full name to avoid future naming collisions
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 01 Oct 2014 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.9-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 18 Aug 2014 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.8-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 15 Jul 2014 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.7-2focal) focal; urgency=high
+
+  * fix slider bar, add context menus for common operations (#251 <https://github.com/ros-visualization/rqt_common_plugins/issues/251>)
+  * fix bug in float range calculations (#241 <https://github.com/ros-visualization/rqt_common_plugins/issues/241>)
+  * remove experimental suffix from rqt_reconfigure (#256 <https://github.com/ros-visualization/rqt_common_plugins/issues/256>)
+  * export architecture_independent flag in package.xml (#254 <https://github.com/ros-visualization/rqt_common_plugins/issues/254>)
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 11 Jul 2014 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.6-2focal) focal; urgency=high
+
+  * remove unnecessary margins to improve usability on small screens (#228 <https://github.com/ros-visualization/rqt_common_plugins/issues/228>)
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 02 Jun 2014 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.5-2focal) focal; urgency=high
+
+  * numerous improvements and bug fixes (#209 <https://github.com/ros-visualization/rqt_common_plugins/pull/209>, #210 <https://github.com/ros-visualization/rqt_common_plugins/pull/210>)
+  * add option to open list of names from command line (#214 <https://github.com/ros-visualization/rqt_common_plugins/pull/214>)
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 07 May 2014 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.4-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 28 Jan 2014 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.3-2focal) focal; urgency=high
+
+  * add groups for rqt plugins, renamed some plugins (#167 <https://github.com/ros-visualization/rqt_common_plugins/issues/167>)
+  * mark rqt_launch and rqt_reconfigure as experimental (#167 <https://github.com/ros-visualization/rqt_common_plugins/issues/167>)
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 08 Jan 2014 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.2-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 14 Oct 2013 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.1-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 09 Oct 2013 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.3.0-2focal) focal; urgency=high
+
+  * fix updating range limits (#108 <https://github.com/ros-visualization/rqt_common_plugins/issues/108>)
+  * fix layout quirks (#150 <https://github.com/ros-visualization/rqt_common_plugins/issues/150>)
+  * fix icon for closing a node (#48 <https://github.com/ros-visualization/rqt_common_plugins/issues/48>)
+  * fix handling of enum parameters with strings
+
+ -- Scott K Logan <logans@cottsay.net>  Wed, 28 Aug 2013 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.17-2focal) focal; urgency=high
+
+  * Improvement; "GUI hangs for awhile or completely, when any one of nodes doesn't return any value" (#81 <https://github.com/ros-visualization/rqt_common_plugins/issues/81>)
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 04 Jul 2013 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.16-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 09 Apr 2013 17:33:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.15-2focal) focal; urgency=high
+
+  * Fix; Segmentation fault using integer slider (#63 <https://github.com/ros-visualization/rqt_common_plugins/issues/63>)
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 09 Apr 2013 04:02:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.14-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 14 Mar 2013 04:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.13-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 12 Mar 2013 02:14:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.12-2focal) focal; urgency=high
+
+  * Improve performance significantly upon launch (#45 <https://github.com/ros-visualization/rqt_common_plugins/issues/45>)
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 11 Mar 2013 17:56:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.11-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 08 Mar 2013 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.10-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Tue, 22 Jan 2013 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.9-2focal) focal; urgency=high
+
+  * Add feature to delete of shown nodes feature
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 17 Jan 2013 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.8-2focal) focal; urgency=high
+
+  * Fix; No Interaction with Boolean values (#2 <https://github.com/ros-visualization/rqt_common_plugins/issues/2>)
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 11 Jan 2013 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.7-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Mon, 24 Dec 2012 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.6-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Sun, 23 Dec 2012 05:00:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.5-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Sat, 22 Dec 2012 00:11:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.4-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 21 Dec 2012 06:13:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.3-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Fri, 21 Dec 2012 05:24:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.2-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 20 Dec 2012 23:29:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.1-2focal) focal; urgency=high
+
+
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 20 Dec 2012 22:47:00 -0000
+
+ros-rolling-rqt-reconfigure (0.2.0-2focal) focal; urgency=high
+
+  * renamed rqt_param to rqt_reconfigure (added missing file)
+  * first release of this package into groovy
+
+ -- Scott K Logan <logans@cottsay.net>  Thu, 20 Dec 2012 22:39:00 -0000
+
+
