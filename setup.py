@@ -11,11 +11,10 @@ if sys.version_info < (3, 5):
 package_name = 'rqt_reconfigure'
 setup(
     name=package_name,
-    version='1.0.4',
+    version='1.0.5',
     package_dir={'': 'src'},
     packages=[package_name],
     data_files=[
-        ('lib/' + package_name, ['scripts/' + package_name]),
         ('share/' + package_name + '/resource', [
             'resource/editor_bool.ui',
             'resource/editor_enum.ui',
@@ -52,4 +51,9 @@ setup(
     ),
     license='BSD',
     tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            package_name + ' = ' + package_name + '.__main__:main',
+        ],
+    },
 )
