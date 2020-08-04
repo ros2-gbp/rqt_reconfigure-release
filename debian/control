@@ -1,0 +1,12 @@
+Source: ros-eloquent-rqt-reconfigure
+Section: misc
+Priority: optional
+Maintainer: Scott K Logan <logans@cottsay.net>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-copyright, ros-eloquent-ament-flake8, ros-eloquent-ament-xmllint, ros-eloquent-ros-workspace, python3-all, python3-setuptools
+Homepage: http://wiki.ros.org/rqt_reconfigure
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-rqt-reconfigure
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-yaml, ros-eloquent-ament-index-python, ros-eloquent-python-qt-binding (>= 0.2.19), ros-eloquent-qt-gui-py-common, ros-eloquent-rclpy, ros-eloquent-rqt-console, ros-eloquent-rqt-gui, ros-eloquent-rqt-gui-py, ros-eloquent-rqt-py-common, ros-eloquent-ros-workspace
+Description: This rqt plugin provides a way to view and edit parameters on nodes.
