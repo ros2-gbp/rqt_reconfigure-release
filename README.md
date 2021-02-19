@@ -1,3 +1,26 @@
+## rqt_reconfigure (foxy) - 1.0.7-1
+
+The packages in the `rqt_reconfigure` repository were released into the `foxy` distro by running `/usr/bin/bloom-release rqt_reconfigure --rosdistro foxy` on `Fri, 19 Feb 2021 16:58:59 -0000`
+
+The `rqt_reconfigure` package was released.
+
+Version of package(s) in repository `rqt_reconfigure`:
+
+- upstream repository: https://github.com/ros-visualization/rqt_reconfigure.git
+- release repository: https://github.com/ros2-gbp/rqt_reconfigure-release.git
+- rosdistro version: `1.0.6-1`
+- old version: `1.0.6-1`
+- new version: `1.0.7-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.1`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## rqt_reconfigure (dashing) - 1.0.6-1
 
 The packages in the `rqt_reconfigure` repository were released into the `dashing` distro by running `/home/cottsay/bloom/develop/bin/bloom-release rqt_reconfigure -r dashing` on `Tue, 04 Aug 2020 01:33:24 -0000`
