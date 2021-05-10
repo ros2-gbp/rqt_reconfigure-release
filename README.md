@@ -1,3 +1,26 @@
+## rqt_reconfigure (galactic) - 1.0.8-1
+
+The packages in the `rqt_reconfigure` repository were released into the `galactic` distro by running `/usr/bin/bloom-release --track galactic --rosdistro galactic rqt_reconfigure` on `Mon, 10 May 2021 13:23:54 -0000`
+
+The `rqt_reconfigure` package was released.
+
+Version of package(s) in repository `rqt_reconfigure`:
+
+- upstream repository: https://github.com/ros-visualization/rqt_reconfigure.git
+- release repository: https://github.com/ros2-gbp/rqt_reconfigure-release.git
+- rosdistro version: `1.0.7-2`
+- old version: `1.0.7-2`
+- new version: `1.0.8-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.1`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## rqt_reconfigure (foxy) - 1.0.8-1
 
 The packages in the `rqt_reconfigure` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --track foxy --rosdistro foxy rqt_reconfigure` on `Mon, 10 May 2021 13:22:05 -0000`
