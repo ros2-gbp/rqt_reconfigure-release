@@ -1,17 +1,9 @@
-#!/usr/bin/env python3
-import sys
-
 from setuptools import setup
-
-
-if sys.version_info < (3, 5):
-    print('ament requires Python 3.5 or higher.', file=sys.stderr)
-    sys.exit(1)
 
 package_name = 'rqt_reconfigure'
 setup(
     name=package_name,
-    version='1.0.7',
+    version='1.0.8',
     package_dir={'': 'src'},
     packages=[package_name],
     data_files=[
