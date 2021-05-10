@@ -1,0 +1,12 @@
+Source: ros-galactic-rqt-reconfigure
+Section: misc
+Priority: optional
+Maintainer: Scott K Logan <logans@cottsay.net>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-copyright, ros-galactic-ament-flake8, ros-galactic-ament-xmllint, ros-galactic-ros-workspace, python3-all, python3-setuptools
+Homepage: http://wiki.ros.org/rqt_reconfigure
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rqt-reconfigure
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-yaml, ros-galactic-ament-index-python, ros-galactic-python-qt-binding (>= 0.2.19), ros-galactic-qt-gui-py-common, ros-galactic-rclpy, ros-galactic-rqt-console, ros-galactic-rqt-gui, ros-galactic-rqt-gui-py, ros-galactic-rqt-py-common, ros-galactic-ros-workspace
+Description: This rqt plugin provides a way to view and edit parameters on nodes.
