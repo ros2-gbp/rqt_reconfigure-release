@@ -1,0 +1,12 @@
+Source: ros-humble-rqt-reconfigure
+Section: misc
+Priority: optional
+Maintainer: Scott K Logan <logans@cottsay.net>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-copyright <!nocheck>, ros-humble-ament-flake8 <!nocheck>, ros-humble-ament-xmllint <!nocheck>, ros-humble-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: http://wiki.ros.org/rqt_reconfigure
+Standards-Version: 3.9.2
+
+Package: ros-humble-rqt-reconfigure
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-yaml, ros-humble-ament-index-python, ros-humble-python-qt-binding (>= 0.2.19), ros-humble-qt-gui-py-common, ros-humble-rclpy, ros-humble-rqt-console, ros-humble-rqt-gui, ros-humble-rqt-gui-py, ros-humble-rqt-py-common, ros-humble-ros-workspace
+Description: This rqt plugin provides a way to view and edit parameters on nodes.
