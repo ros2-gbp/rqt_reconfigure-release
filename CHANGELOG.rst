@@ -2,14 +2,10 @@
 Changelog for package rqt_reconfigure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.2.0 (2022-09-13)
+1.1.1 (2022-09-13)
 ------------------
-* Fix float slider step size (`#117 <https://github.com/ros-visualization/rqt_reconfigure/issues/117>`_)
-* update maintainer
-* Contributors: Audrow Nash, Dharini Dutia, Florian Vahl, Jacob Perron, quarkytale
-
-1.1.0 (2022-05-10)
-------------------
+* Fix float slider step size (`#117 <https://github.com/ros-visualization/rqt_reconfigure/issues/117>`_) (`#119 <https://github.com/ros-visualization/rqt_reconfigure/issues/119>`_)
+* Contributors: mergify[bot]
 
 1.0.8 (2021-05-10)
 ------------------
