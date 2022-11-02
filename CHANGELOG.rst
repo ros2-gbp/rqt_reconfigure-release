@@ -2,10 +2,20 @@
 Changelog for package rqt_reconfigure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.1.1 (2022-09-13)
+1.3.0 (2022-11-02)
 ------------------
-* Fix float slider step size (`#117 <https://github.com/ros-visualization/rqt_reconfigure/issues/117>`_) (`#119 <https://github.com/ros-visualization/rqt_reconfigure/issues/119>`_)
-* Contributors: mergify[bot]
+* Cleanup mislabeled BSD license (`#66 <https://github.com/ros-visualization/rqt_reconfigure/issues/66>`_)
+* Add support for array types (`#108 <https://github.com/ros-visualization/rqt_reconfigure/issues/108>`__)
+* Contributors: Shrijit Singh, Tully Foote
+
+1.2.0 (2022-09-13)
+------------------
+* Fix float slider step size (`#117 <https://github.com/ros-visualization/rqt_reconfigure/issues/117>`_)
+* update maintainer
+* Contributors: Audrow Nash, Dharini Dutia, Florian Vahl, Jacob Perron, quarkytale
+
+1.1.0 (2022-05-10)
+------------------
 
 1.0.8 (2021-05-10)
 ------------------
@@ -164,7 +174,7 @@ Changelog for package rqt_reconfigure
 
 0.3.0 (2013-08-28)
 ------------------
-* fix updating range limits (`#108 <https://github.com/ros-visualization/rqt_common_plugins/issues/108>`_)
+* fix updating range limits (`#108 <https://github.com/ros-visualization/rqt_common_plugins/issues/108>`__)
 * fix layout quirks (`#150 <https://github.com/ros-visualization/rqt_common_plugins/issues/150>`_)
 * fix icon for closing a node (`#48 <https://github.com/ros-visualization/rqt_common_plugins/issues/48>`_)
 * fix handling of enum parameters with strings
