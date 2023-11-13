@@ -1,29 +1,33 @@
 # Copyright (c) 2019 Open Source Robotics Foundation, Inc.
+# All rights reserved.
+#
+# Software License Agreement (BSD License 2.0)
 #
 # Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
+# modification, are permitted provided that the following conditions
+# are met:
 #
-#    * Redistributions of source code must retain the above copyright
-#      notice, this list of conditions and the following disclaimer.
+#  * Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#  * Redistributions in binary form must reproduce the above
+#    copyright notice, this list of conditions and the following
+#    disclaimer in the documentation and/or other materials provided
+#    with the distribution.
+#  * Neither the name of Willow Garage, Inc. nor the names of its
+#    contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
 #
-#    * Redistributions in binary form must reproduce the above copyright
-#      notice, this list of conditions and the following disclaimer in the
-#      documentation and/or other materials provided with the distribution.
-#
-#    * Neither the name of the copyright holder nor the names of its
-#      contributors may be used to endorse or promote products derived from
-#      this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
 # Author: Gonzalo de Pedro
@@ -36,8 +40,6 @@ from python_qt_binding.QtWidgets import (QFileDialog, QFormLayout,
                                          QWidget)
 
 import rclpy
-
-from rclpy.parameter import Parameter
 
 from rqt_reconfigure import logging
 
@@ -52,9 +54,6 @@ from rqt_reconfigure.param_editors import (BooleanEditor,  # noqa: F401
                                            DoubleEditor, EDITOR_TYPES,
                                            EditorWidget, IntegerEditor,
                                            StringEditor)
-
-from rqt_reconfigure.text_filter import TextFilter
-from rqt_reconfigure.text_filter_widget import TextFilterWidget
 
 import yaml
 
@@ -107,20 +106,9 @@ class ParamClientWidget(QWidget):
         bt_disable_node.pressed.connect(self._node_disable_bt_clicked)
         h_layout_nodeheader.addWidget(bt_disable_node)
 
-        filter_widget = QWidget(self)
-        filter_h_layout = QHBoxLayout()
-        self.text_filter = TextFilter()
-        self.text_filter_widget = TextFilterWidget(self.text_filter)
-        self.filter_label = QLabel('&Filter param:')
-        self.filter_label.setBuddy(self.text_filter_widget)
-        filter_h_layout.addWidget(self.filter_label)
-        filter_h_layout.addWidget(self.text_filter_widget)
-        filter_widget.setLayout(filter_h_layout)
-
         grid_widget = QWidget(self)
         self.grid = QFormLayout(grid_widget)
         verticalLayout.addWidget(widget_nodeheader)
-        verticalLayout.addWidget(filter_widget)
         verticalLayout.addWidget(grid_widget, 1)
         # Again, these UI operation above needs to happen in .ui file.
         try:
@@ -130,8 +118,7 @@ class ParamClientWidget(QWidget):
                 self._param_client.describe_parameters(param_names)
             )
         except Exception as e:
-            logging.warn(
-                f'Failed to retrieve parameters from node {self._node_grn}: {e}')
+            logging.warn('Failed to retrieve parameters from node: ' + str(e))
 
         # Save and load buttons
         button_widget = QWidget(self)
@@ -150,10 +137,6 @@ class ParamClientWidget(QWidget):
         button_header.addWidget(save_button)
         button_header.addWidget(load_button)
 
-        self.text_filter.filter_changed_signal.connect(
-            self._filter_key_changed
-        )
-
         self.setMinimumWidth(150)
 
     def get_node_grn(self):
@@ -170,8 +153,7 @@ class ParamClientWidget(QWidget):
                 )
                 self.add_editor_widgets(new_parameters, new_descriptors)
             except Exception as e:
-                logging.warn(
-                    'Failed to get information about parameters: ' + str(e))
+                logging.warn('Failed to get information about parameters: ' + str(e))
 
         if changed_parameters:
             self.update_editor_widgets(changed_parameters)
@@ -243,10 +225,10 @@ class ParamClientWidget(QWidget):
 
     def add_editor_widgets(self, parameters, descriptors):
         for parameter, descriptor in zip(parameters, descriptors):
-            if Parameter.Type(descriptor.type) not in EDITOR_TYPES:
+            if parameter.type_ not in EDITOR_TYPES:
                 continue
             logging.debug('Adding editor widget for {}'.format(parameter.name))
-            editor_widget = EDITOR_TYPES[Parameter.Type(descriptor.type)](
+            editor_widget = EDITOR_TYPES[parameter.type_](
                 self._param_client, parameter, descriptor
             )
             self._editor_widgets[parameter.name] = editor_widget
@@ -270,26 +252,6 @@ class ParamClientWidget(QWidget):
 
         self.deleteLater()
 
-    def _filter_key_changed(self):
-        self._filter_param(self.text_filter.get_text())
-
-    def _filter_param(self, filter_key):
-        try:
-            param_names = self._param_client.list_parameters()
-            param_names_filtered = \
-                list(filter(lambda p: filter_key in p, param_names)) if filter_key else param_names
-            client_params_remove = self._param_client.get_parameters(
-                list(self._editor_widgets.keys()))
-            self.remove_editor_widgets(client_params_remove)
-            client_params_filtered = self._param_client.get_parameters(
-                param_names_filtered
-            )
-            client_params_desc = self._param_client.describe_parameters(
-                param_names_filtered
-            )
-            self.add_editor_widgets(
-                client_params_filtered,
-                client_params_desc
-            )
-        except Exception as e:
-            logging.warn('Failed to retrieve parameters from node: ' + str(e))
+    def filter_param(self, filter_key):
+        # TODO impl
+        pass

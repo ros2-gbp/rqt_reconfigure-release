@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>rqt_reconfigure</name>
-  <version>1.6.1</version>
+  <version>1.1.2</version>
   <description>
     This rqt plugin provides a way to view and edit parameters on nodes.
   </description>
-  
-
-  <maintainer email="dharini@openrobotics.org">Dharini Dutia</maintainer>
+  <maintainer email="logans@cottsay.net">Scott K Logan</maintainer>
+  <maintainer email="michael.jeronimo@openrobotics.org">Michael Jeronimo</maintainer>
 
   <license>BSD</license>
 
@@ -19,8 +18,6 @@
   <url type="bugtracker">https://github.com/ros-visualization/rqt_reconfigure/issues</url>
 
   <author>Isaac Saito</author>
-  <author email="michael.jeronimo@openrobotics.org">Michael Jeronimo</author>
-  <author email="logans@cottsay.net">Scott K Logan</author>
   <author>Ze'ev Klapow</author>
 
   <exec_depend>ament_index_python</exec_depend>
