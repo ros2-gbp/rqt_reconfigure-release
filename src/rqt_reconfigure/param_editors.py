@@ -1,39 +1,36 @@
 # Copyright (c) 2012, Willow Garage, Inc.
-# All rights reserved.
-#
-# Software License Agreement (BSD License 2.0)
 #
 # Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions
-# are met:
+# modification, are permitted provided that the following conditions are met:
 #
-#  * Redistributions of source code must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-#  * Redistributions in binary form must reproduce the above
-#    copyright notice, this list of conditions and the following
-#    disclaimer in the documentation and/or other materials provided
-#    with the distribution.
-#  * Neither the name of Willow Garage, Inc. nor the names of its
-#    contributors may be used to endorse or promote products derived
-#    from this software without specific prior written permission.
+#    * Redistributions of source code must retain the above copyright
+#      notice, this list of conditions and the following disclaimer.
 #
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#    * Redistributions in binary form must reproduce the above copyright
+#      notice, this list of conditions and the following disclaimer in the
+#      documentation and/or other materials provided with the distribution.
+#
+#    * Neither the name of the copyright holder nor the names of its
+#      contributors may be used to endorse or promote products derived from
+#      this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 #
 # Author: Isaac Saito, Ze'ev Klapow
 
+import array
 from decimal import Decimal
-
+import json
 import math
 import os
 
@@ -353,7 +350,9 @@ class DoubleEditor(EditorWidget):
             self._slider_horizontal.setTracking(False)
             self._slider_horizontal.valueChanged.connect(self._slider_changed)
         else:
-            self._paramval_lineEdit.setValidator(QDoubleValidator())
+            validator = QDoubleValidator()
+            validator.setLocale(QLocale(QLocale.C))
+            self._paramval_lineEdit.setValidator(validator)
             self._min_val_label.setVisible(False)
             self._max_val_label.setVisible(False)
             self._slider_horizontal.setVisible(False)
@@ -440,9 +439,84 @@ class DoubleEditor(EditorWidget):
         self.update(float('NaN'))
 
 
+class ArrayEditor(EditorWidget):
+    _update_signal = Signal(list)
+
+    def __init__(self, *args, **kwargs):
+        super(ArrayEditor, self).__init__(*args, **kwargs)
+        ui_str = os.path.join(
+            package_path, 'share', 'rqt_reconfigure', 'resource',
+            'editor_string.ui')
+        loadUi(ui_str, self)
+
+        if isinstance(self.parameter.value, array.array):
+            self._paramval_lineedit.setText(str(self.parameter.value.tolist()))
+        else:
+            self._paramval_lineedit.setText(str(self.parameter.value))
+
+        # Update param server when cursor leaves the text field
+        # or enter is pressed.
+        self._paramval_lineedit.editingFinished.connect(self.edit_finished)
+
+        # Make param server update text field
+        self._update_signal.connect(self._update_gui)
+
+        # Add special menu items
+        self.cmenu.addAction(self.tr('Set to Empty String')
+                             ).triggered.connect(self._set_to_empty)
+
+        if self.descriptor.read_only:
+            self._paramval_lineedit.setReadOnly(True)
+            self.cmenu.setEnabled(False)
+
+    def update_local(self, value):
+        super(ArrayEditor, self).update_local(value)
+        logging.debug('DoubleArrayEditor update_local={}'.format(value))
+        if isinstance(self.parameter.value, array.array):
+            self._update_signal.emit(value.tolist())
+        else:
+            self._update_signal.emit(value)
+
+    def _update_gui(self, value):
+        self._paramval_lineedit.setText(str(value))
+
+    def edit_finished(self):
+        logging.debug('ArrayEditor edit_finished val={}'.format(
+            self._paramval_lineedit.text()))
+        params_string = self._paramval_lineedit.text()
+        if self.parameter.from_parameter_msg:
+            params_string = params_string.replace("'", '"')
+        params_list = json.loads(params_string)
+
+        if isinstance(self.parameter.value, array.array):
+            if self.parameter.value.typecode == 'q':
+                params_list = [int(val) for val in params_list]
+            else:
+                params_list = [float(val) for val in params_list]
+            self.update(array.array(self.parameter.value.typecode, params_list))
+        else:
+            if Parameter.Type.from_parameter_value(self.parameter.value) \
+                    == Parameter.Type.BOOL_ARRAY:
+                params_list = [bool(val) for val in params_list]
+            elif Parameter.Type.from_parameter_value(self.parameter.value) \
+                    == Parameter.Type.BYTE_ARRAY:
+                params_list = [bytes(val) for val in params_list]
+            else:
+                params_list = [str(val) for val in params_list]
+            self.update(params_list)
+
+    def _set_to_empty(self):
+        self.update('[]')
+
+
 EDITOR_TYPES = {
     Parameter.Type.BOOL: BooleanEditor,
     Parameter.Type.INTEGER: IntegerEditor,
     Parameter.Type.DOUBLE: DoubleEditor,
     Parameter.Type.STRING: StringEditor,
+    Parameter.Type.BOOL_ARRAY: ArrayEditor,
+    Parameter.Type.BYTE_ARRAY: ArrayEditor,
+    Parameter.Type.INTEGER_ARRAY: ArrayEditor,
+    Parameter.Type.DOUBLE_ARRAY: ArrayEditor,
+    Parameter.Type.STRING_ARRAY: ArrayEditor,
 }

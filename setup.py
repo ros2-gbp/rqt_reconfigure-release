@@ -3,7 +3,7 @@ from setuptools import setup
 package_name = 'rqt_reconfigure'
 setup(
     name=package_name,
-    version='1.1.2',
+    version='1.3.4',
     package_dir={'': 'src'},
     packages=[package_name],
     data_files=[
@@ -27,8 +27,8 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     author="Isaac Saito, Ze'ev Klapow",
-    maintainer='Scott K Logan',
-    maintainer_email='logans@cottsay.net',
+    maintainer='Dharini Dutia',
+    maintainer_email='dharini@openrobotics.org',
     keywords=['ROS'],
     classifiers=[
         'Intended Audience :: Developers',
