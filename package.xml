@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>rqt_reconfigure</name>
-  <version>1.6.1</version>
+  <version>1.6.2</version>
   <description>
     This rqt plugin provides a way to view and edit parameters on nodes.
   </description>
@@ -36,6 +36,7 @@
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_xmllint</test_depend>
+  <test_depend>python3-pytest</test_depend>
 
   <export>
     <architecture_independent/>
