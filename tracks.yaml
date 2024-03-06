@@ -178,5 +178,4 @@ tracks:
     ros_distro: rolling
     vcs_type: git
     vcs_uri: https://github.com/ros-visualization/rqt_reconfigure.git
-    version: 1.6.2
-    version_saved: :{auto}
+    version: :{auto}
