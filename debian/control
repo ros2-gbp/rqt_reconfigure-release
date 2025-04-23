@@ -1,0 +1,12 @@
+Source: ros-kilted-rqt-reconfigure
+Section: misc
+Priority: optional
+Maintainer: Dharini Dutia <dharini@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-kilted-ament-copyright <!nocheck>, ros-kilted-ament-flake8 <!nocheck>, ros-kilted-ament-xmllint <!nocheck>, ros-kilted-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: http://wiki.ros.org/rqt_reconfigure
+Standards-Version: 3.9.2
+
+Package: ros-kilted-rqt-reconfigure
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-yaml, ros-kilted-ament-index-python, ros-kilted-python-qt-binding (>= 0.2.19), ros-kilted-qt-gui-py-common, ros-kilted-rclpy, ros-kilted-rqt-console, ros-kilted-rqt-gui, ros-kilted-rqt-gui-py, ros-kilted-rqt-py-common, ros-kilted-ros-workspace
+Description: This rqt plugin provides a way to view and edit parameters on nodes.
