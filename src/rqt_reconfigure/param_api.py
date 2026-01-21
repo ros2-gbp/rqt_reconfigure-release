@@ -130,7 +130,7 @@ class ParamClient(object):
         if result is None:
             raise AsyncServiceCallFailed(hint='the target node may not be spinning')
 
-        return result
+        return future.result()
 
 
 def create_param_client(node, remote_node_name, param_change_callback=None):
