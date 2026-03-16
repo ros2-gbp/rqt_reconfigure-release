@@ -33,6 +33,7 @@ from decimal import Decimal
 import json
 import math
 import os
+import sys
 
 from ament_index_python import get_resource
 
@@ -192,7 +193,6 @@ class StringEditor(EditorWidget):
 
 
 class IntegerEditor(EditorWidget):
-    _update_signal = Signal(int)
 
     def __init__(self, *args, **kwargs):
         super(IntegerEditor, self).__init__(*args, **kwargs)
@@ -208,14 +208,27 @@ class IntegerEditor(EditorWidget):
             self._min_val_label.setText(str(self._min))
             self._max_val_label.setText(str(self._max))
 
-            self._step = int(self.descriptor.integer_range[0].step)
-            self._slider_horizontal.setSingleStep(self._step)
-            self._slider_horizontal.setTickInterval(self._step)
-            self._slider_horizontal.setPageStep(self._step)
-            self._slider_horizontal.setRange(self._min, self._max)
+            if self._max > 2**31-1 or self._min < -2**31:
+                self.scale = (2**31-1) / (self._max - self._min)
+                logging.warn(
+                    f'The range of this parameter ({self._min} to {self._max}) is too large '
+                    f'for the slider to handle. '
+                    f'Scaling down to fit within 32 bits with factor {self.scale}.'
+                )
+            else:
+                self.scale = 1
+                # TODO: Fix that the naming of _paramval_lineEdit instance is not
+                #       consistent among Editor's subclasses.
+                self._paramval_lineEdit.setValidator(QIntValidator(self._min, self._max, self))
 
-            self._slider_horizontal.setValue(int(self.parameter.value))
-            self._slider_horizontal.setValue(int(self.parameter.value))
+            self._step = int(self.descriptor.integer_range[0].step)
+            self._slider_horizontal.setSingleStep(self._get_value_slider(self._step))
+            self._slider_horizontal.setTickInterval(self._get_value_slider(self._step))
+            self._slider_horizontal.setPageStep(self._get_value_slider(self._step))
+            self._slider_horizontal.setRange(self._get_value_slider(self._min),
+                                             self._get_value_slider(self._max))
+
+            self._slider_horizontal.setValue(self._get_value_slider(int(self.parameter.value)))
 
             # Make slider update text (locally)
             self._slider_horizontal.sliderMoved.connect(self._slider_moved)
@@ -231,24 +244,18 @@ class IntegerEditor(EditorWidget):
             self.cmenu.addAction(self.tr('Set to Minimum')
                                  ).triggered.connect(self._set_to_min)
 
-            # TODO: Fix that the naming of _paramval_lineEdit instance is not
-            #       consistent among Editor's subclasses.
-            self._paramval_lineEdit.setValidator(QIntValidator(self._min,
-                                                 self._max, self))
         else:
             self._paramval_lineEdit.setValidator(QIntValidator())
             self._min_val_label.setVisible(False)
             self._max_val_label.setVisible(False)
             self._slider_horizontal.setVisible(False)
+            self.scale = 0
 
         # Make keyboard input change slider position and update param server
         self._paramval_lineEdit.editingFinished.connect(self._text_changed)
 
         # Initialize to default
         self._paramval_lineEdit.setText(str(self.parameter.value))
-
-        # Make the param server update selection
-        self._update_signal.connect(self._update_gui)
 
         if self.descriptor.read_only:
             self._paramval_lineEdit.setEnabled(False)
@@ -258,36 +265,48 @@ class IntegerEditor(EditorWidget):
         # Don't process wheel events when not focused
         self._slider_horizontal.installEventFilter(self)
 
+    def _get_value_slider(self, value):
+        return int(round((value) * self.scale))
+
+    def _get_value_textfield(self):
+        return self._slider_horizontal.sliderPosition() / self.scale if self.scale else 0
+
     def eventFilter(self, obj, event):
         if event.type() == QEvent.Wheel and not obj.hasFocus():
             return True
         return super(EditorWidget, self).eventFilter(obj, event)
 
+    def _clamp_int(self, value):
+        return max(-2**31, min(2**31 - 1, value))
+
     def _slider_moved(self):
         # This is a "local" edit - only change the text
         self._paramval_lineEdit.setText(str(
-            self._slider_horizontal.sliderPosition()))
+            self._get_value_textfield()))
 
     def _text_changed(self):
         # This is a final change - update param server
         # No need to update slider... update() will
+        logging.debug('_text_changed called with text: {}'.format(self._paramval_lineEdit.text()))
         self.update(int(self._paramval_lineEdit.text()))
 
     def _slider_changed(self):
         # This is a final change - update param server
         # No need to update text... update() will
-        self.update(self._slider_horizontal.value())
+        logging.debug('_slider_changed called with value: {}'.format(self._get_value_textfield()))
+        self.update(int(self._get_value_textfield()))
 
     def update_local(self, value):
+        logging.debug('update_local called with value: {}'.format(value))
         super(IntegerEditor, self).update_local(value)
         self._update_gui(int(value))
-        self._update_signal.emit(int(value))
 
     def _update_gui(self, value):
+        logging.debug('_update_gui called with value: {}'.format(value))
         # Block all signals so we don't loop
         self._slider_horizontal.blockSignals(True)
         # Update the slider value
-        self._slider_horizontal.setValue(value)
+        self._slider_horizontal.setValue(self._get_value_slider(value))
         # Make the text match
         self._paramval_lineEdit.setText(str(value))
         self._slider_horizontal.blockSignals(False)
@@ -309,7 +328,6 @@ class DoubleEditor(EditorWidget):
             'editor_number.ui'
         )
         loadUi(ui_num, self)
-
         if len(self.descriptor.floating_point_range) > 0:
             # Handle unbounded doubles nicely
             self._min = float(self.descriptor.floating_point_range[0].from_value)
@@ -321,9 +339,12 @@ class DoubleEditor(EditorWidget):
             self._func = lambda x: x
             self._ifunc = self._func
 
-            # If we have no range, disable the slider
+            # If we have no range, slider is disabled automatically
             self.scale = (self._func(self._max) - self._func(self._min))
-            self.scale = 100 / self.scale
+            if math.isfinite(self.scale):
+                self.scale = 100 / self.scale
+            else:
+                self.scale = 100 / (sys.float_info.max - sys.float_info.min)
 
             # config step
             self._step = float(self.descriptor.floating_point_range[0].step)
@@ -409,7 +430,13 @@ class DoubleEditor(EditorWidget):
         ) if self.scale else 0
 
     def _get_value_slider(self, value):
-        return int(round((self._func(value)) * self.scale))
+
+        if math.isfinite(value):
+            return int(round((self._func(value)) * self.scale))
+        if math.isinf(value):
+            return int(round((self._func(math.copysign(100, value)))))
+        # nan
+        return 0
 
     def update_local(self, value):
         super(DoubleEditor, self).update_local(value)
