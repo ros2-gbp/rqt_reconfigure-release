@@ -2,16 +2,24 @@
 Changelog for package rqt_reconfigure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.7.1 (2026-03-16)
+1.6.4 (2026-03-16)
 ------------------
-* Harden behavior if double value or limit is Infinity (backport `#161 <https://github.com/ros-visualization/rqt_reconfigure/issues/161>`_) (`#165 <https://github.com/ros-visualization/rqt_reconfigure/issues/165>`_)
-* Scale IntegerEditor if range exceeds int32 (backport `#160 <https://github.com/ros-visualization/rqt_reconfigure/issues/160>`_) (`#162 <https://github.com/ros-visualization/rqt_reconfigure/issues/162>`_)
-* fix setuptools deprecation (backport `#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_) (`#154 <https://github.com/ros-visualization/rqt_reconfigure/issues/154>`_)
-* Remove CODEOWNERS (`#147 <https://github.com/ros-visualization/rqt_reconfigure/issues/147>`_)
-* Contributors: Alejandro Hernández Cordero, mergify[bot]
+* Harden behavior if double value or limit is Infinity (backport `#161 <https://github.com/ros-visualization/rqt_reconfigure/issues/161>`_) (`#166 <https://github.com/ros-visualization/rqt_reconfigure/issues/166>`_)
+* Scale IntegerEditor if range exceeds int32 (backport `#160 <https://github.com/ros-visualization/rqt_reconfigure/issues/160>`_) (`#163 <https://github.com/ros-visualization/rqt_reconfigure/issues/163>`_)
+* Contributors: mergify[bot]
 
-1.7.0 (2024-04-26)
+1.6.3 (2026-01-21)
 ------------------
+* fix setuptools deprecation (backport `#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_) (`#155 <https://github.com/ros-visualization/rqt_reconfigure/issues/155>`_)
+  fix setuptools deprecation (`#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_)
+  (cherry picked from commit edf9209370dded4f2caae0c0dac1b67e75c4f914)
+  Co-authored-by: mosfet80 <10235105+mosfet80@users.noreply.github.com>
+  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
+* Remove CODEOWNERS (backport `#147 <https://github.com/ros-visualization/rqt_reconfigure/issues/147>`_) (`#148 <https://github.com/ros-visualization/rqt_reconfigure/issues/148>`_)
+  Remove CODEOWNERS (`#147 <https://github.com/ros-visualization/rqt_reconfigure/issues/147>`_)
+  (cherry picked from commit 6ce86a47710a5ec3d56e4a92d42f7b36a5a4f4fa)
+  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
+* Contributors: mergify[bot]
 
 1.6.2 (2024-02-07)
 ------------------
