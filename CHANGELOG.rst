@@ -2,28 +2,13 @@
 Changelog for package rqt_reconfigure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.8.3 (2026-03-16)
+1.7.1 (2026-03-16)
 ------------------
-* Harden behavior if double value or limit is Infinity (`#161 <https://github.com/ros-visualization/rqt_reconfigure/issues/161>`_)
-* Scale IntegerEditor if range exceeds int32 (`#160 <https://github.com/ros-visualization/rqt_reconfigure/issues/160>`_)
-* Ignore A005 for future flake8 (`#159 <https://github.com/ros-visualization/rqt_reconfigure/issues/159>`_)
-* Contributors: Christoph Fröhlich, Michael Carlstrom
-
-1.8.2 (2025-11-24)
-------------------
-* Cleanup mislabeled BSD license (`#157 <https://github.com/ros-visualization/rqt_reconfigure/issues/157>`_)
-* Contributors: Alejandro Hernández Cordero
-
-1.8.1 (2025-07-25)
-------------------
-* fix setuptools deprecation (`#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_)
-* If updating remote fails, reflect the failure locally (`#144 <https://github.com/ros-visualization/rqt_reconfigure/issues/144>`_)
-* Contributors: Jonathan Selling, mosfet80
-
-1.8.0 (2025-04-28)
-------------------
+* Harden behavior if double value or limit is Infinity (backport `#161 <https://github.com/ros-visualization/rqt_reconfigure/issues/161>`_) (`#165 <https://github.com/ros-visualization/rqt_reconfigure/issues/165>`_)
+* Scale IntegerEditor if range exceeds int32 (backport `#160 <https://github.com/ros-visualization/rqt_reconfigure/issues/160>`_) (`#162 <https://github.com/ros-visualization/rqt_reconfigure/issues/162>`_)
+* fix setuptools deprecation (backport `#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_) (`#154 <https://github.com/ros-visualization/rqt_reconfigure/issues/154>`_)
 * Remove CODEOWNERS (`#147 <https://github.com/ros-visualization/rqt_reconfigure/issues/147>`_)
-* Contributors: Alejandro Hernández Cordero
+* Contributors: Alejandro Hernández Cordero, mergify[bot]
 
 1.7.0 (2024-04-26)
 ------------------
