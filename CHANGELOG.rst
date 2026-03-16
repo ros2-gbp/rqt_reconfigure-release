@@ -2,79 +2,27 @@
 Changelog for package rqt_reconfigure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.6.4 (2026-03-16)
+1.1.4 (2026-03-16)
 ------------------
-* Harden behavior if double value or limit is Infinity (backport `#161 <https://github.com/ros-visualization/rqt_reconfigure/issues/161>`_) (`#166 <https://github.com/ros-visualization/rqt_reconfigure/issues/166>`_)
-* Scale IntegerEditor if range exceeds int32 (backport `#160 <https://github.com/ros-visualization/rqt_reconfigure/issues/160>`_) (`#163 <https://github.com/ros-visualization/rqt_reconfigure/issues/163>`_)
+* Harden behavior if double value or limit is Infinity (backport `#161 <https://github.com/ros-visualization/rqt_reconfigure/issues/161>`_) (`#167 <https://github.com/ros-visualization/rqt_reconfigure/issues/167>`_)
+* Scale IntegerEditor if range exceeds int32 (backport `#160 <https://github.com/ros-visualization/rqt_reconfigure/issues/160>`_) (`#164 <https://github.com/ros-visualization/rqt_reconfigure/issues/164>`_)
 * Contributors: mergify[bot]
 
-1.6.3 (2026-01-21)
+1.1.3 (2026-02-13)
 ------------------
-* fix setuptools deprecation (backport `#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_) (`#155 <https://github.com/ros-visualization/rqt_reconfigure/issues/155>`_)
-  fix setuptools deprecation (`#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_)
-  (cherry picked from commit edf9209370dded4f2caae0c0dac1b67e75c4f914)
-  Co-authored-by: mosfet80 <10235105+mosfet80@users.noreply.github.com>
-  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
-* Remove CODEOWNERS (backport `#147 <https://github.com/ros-visualization/rqt_reconfigure/issues/147>`_) (`#148 <https://github.com/ros-visualization/rqt_reconfigure/issues/148>`_)
-  Remove CODEOWNERS (`#147 <https://github.com/ros-visualization/rqt_reconfigure/issues/147>`_)
-  (cherry picked from commit 6ce86a47710a5ec3d56e4a92d42f7b36a5a4f4fa)
-  Co-authored-by: Alejandro Hernández Cordero <ahcorde@gmail.com>
+* fix setuptools deprecation (backport `#153 <https://github.com/ros-visualization/rqt_reconfigure/issues/153>`_) (`#156 <https://github.com/ros-visualization/rqt_reconfigure/issues/156>`_)
+* add arraytypes into humble (`#145 <https://github.com/ros-visualization/rqt_reconfigure/issues/145>`_)
+* Contributors: Gordon Stevenson, mergify[bot]
+
+1.1.2 (2023-11-13)
+------------------
+* Fixed executor conflict (backport `#126 <https://github.com/ros-visualization/rqt_reconfigure/issues/126>`_) (`#136 <https://github.com/ros-visualization/rqt_reconfigure/issues/136>`_)
 * Contributors: mergify[bot]
 
-1.6.2 (2024-02-07)
+1.1.1 (2022-09-13)
 ------------------
-* Explicitly add a pytest test dependency. (`#141 <https://github.com/ros-visualization/rqt_reconfigure/issues/141>`_)
-* Remove unnecessary parentheses around if statements. (`#140 <https://github.com/ros-visualization/rqt_reconfigure/issues/140>`_)
-* Contributors: Chris Lalancette
-
-1.6.1 (2023-10-09)
-------------------
-* Fixed executor conflict (`#126 <https://github.com/ros-visualization/rqt_reconfigure/issues/126>`_)
-* Contributors: Aleksander Szymański
-
-1.6.0 (2023-10-04)
-------------------
-* Add param filtering (`#128 <https://github.com/ros-visualization/rqt_reconfigure/issues/128>`_)
-* Contributors: Devarsi Rawal
-
-1.5.0 (2023-09-07)
-------------------
-* Fix handling of namespaces in the node tree  (`#132 <https://github.com/ros-visualization/rqt_reconfigure/issues/132>`_)
-* Contributors: Nick Lamprianidis
-
-1.4.0 (2023-04-28)
-------------------
-
-1.3.3 (2023-04-12)
-------------------
-* reorder imports to fix flake8 warning (`#129 <https://github.com/ros-visualization/rqt_reconfigure/issues/129>`_)
-* Fixed validator locale when float value is not bound in a range. (`#121 <https://github.com/ros-visualization/rqt_reconfigure/issues/121>`_)
-* Contributors: Aris Synodinos, Christian Rauch
-
-1.3.2 (2023-04-11)
-------------------
-* get parameter type from descriptor
-* Contributors: Christian Rauch, Dharini Dutia
-
-1.3.1 (2023-02-14)
-------------------
-* [rolling] Update maintainers - 2022-11-07 (`#122 <https://github.com/ros-visualization/rqt_reconfigure/issues/122>`_)
-* Contributors: Audrow Nash
-
-1.3.0 (2022-11-02)
-------------------
-* Cleanup mislabeled BSD license (`#66 <https://github.com/ros-visualization/rqt_reconfigure/issues/66>`_)
-* Add support for array types (`#108 <https://github.com/ros-visualization/rqt_reconfigure/issues/108>`__)
-* Contributors: Shrijit Singh, Tully Foote
-
-1.2.0 (2022-09-13)
-------------------
-* Fix float slider step size (`#117 <https://github.com/ros-visualization/rqt_reconfigure/issues/117>`_)
-* update maintainer
-* Contributors: Audrow Nash, Dharini Dutia, Florian Vahl, Jacob Perron, quarkytale
-
-1.1.0 (2022-05-10)
-------------------
+* Fix float slider step size (`#117 <https://github.com/ros-visualization/rqt_reconfigure/issues/117>`_) (`#119 <https://github.com/ros-visualization/rqt_reconfigure/issues/119>`_)
+* Contributors: mergify[bot]
 
 1.0.8 (2021-05-10)
 ------------------
@@ -233,7 +181,7 @@ Changelog for package rqt_reconfigure
 
 0.3.0 (2013-08-28)
 ------------------
-* fix updating range limits (`#108 <https://github.com/ros-visualization/rqt_common_plugins/issues/108>`__)
+* fix updating range limits (`#108 <https://github.com/ros-visualization/rqt_common_plugins/issues/108>`_)
 * fix layout quirks (`#150 <https://github.com/ros-visualization/rqt_common_plugins/issues/150>`_)
 * fix icon for closing a node (`#48 <https://github.com/ros-visualization/rqt_common_plugins/issues/48>`_)
 * fix handling of enum parameters with strings
