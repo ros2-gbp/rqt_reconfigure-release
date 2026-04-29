@@ -1,0 +1,12 @@
+Source: ros-lyrical-rqt-reconfigure
+Section: misc
+Priority: optional
+Maintainer: Dharini Dutia <dharini@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-lyrical-ament-copyright <!nocheck>, ros-lyrical-ament-flake8 <!nocheck>, ros-lyrical-ament-xmllint <!nocheck>, ros-lyrical-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: http://wiki.ros.org/rqt_reconfigure
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-rqt-reconfigure
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, python3-yaml, ros-lyrical-ament-index-python, ros-lyrical-python-qt-binding (>= 0.2.19), ros-lyrical-qt-gui-py-common, ros-lyrical-rclpy, ros-lyrical-rqt-console, ros-lyrical-rqt-gui, ros-lyrical-rqt-gui-py, ros-lyrical-rqt-py-common, ros-lyrical-ros-workspace
+Description: This rqt plugin provides a way to view and edit parameters on nodes.
