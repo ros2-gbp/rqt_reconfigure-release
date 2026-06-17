@@ -28,6 +28,8 @@
 #
 # Author: Isaac Saito
 
+from __future__ import division
+
 from collections import OrderedDict
 
 import os

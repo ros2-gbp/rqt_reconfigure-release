@@ -28,6 +28,8 @@
 #
 # Author: Isaac Saito
 
+from __future__ import division
+
 import sys
 
 from python_qt_binding.QtCore import QMargins, Signal
