@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>rqt_reconfigure</name>
-  <version>2.0.3</version>
+  <version>2.0.4</version>
   <description>
     This rqt plugin provides a way to view and edit parameters on nodes.
   </description>
@@ -12,7 +12,7 @@
   <license>BSD</license>
 
   <!-- Some tests are ASL 2.0 -->
-  <license>Apache License 2.0</license>
+  <license>Apache-2.0</license>
 
   <url type="website">http://wiki.ros.org/rqt_reconfigure</url>
   <url type="repository">https://github.com/ros-visualization/rqt_reconfigure</url>
@@ -27,6 +27,7 @@
   <exec_depend version_gte="0.2.19">python_qt_binding</exec_depend>
   <exec_depend>python3-yaml</exec_depend>
   <exec_depend>qt_gui_py_common</exec_depend>
+  <exec_depend>rcl_interfaces</exec_depend>
   <exec_depend>rclpy</exec_depend>
   <exec_depend>rqt_console</exec_depend>
   <exec_depend>rqt_gui</exec_depend>
